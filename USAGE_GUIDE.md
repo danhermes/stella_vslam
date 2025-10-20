@@ -88,94 +88,25 @@ Save it to:     ~/vocab/orb_vocab.fbow
 ## ⚡ Quick Test
 
 ```bash
-# Verify executables are accessible
-which run_video_slam
-# Should show: /usr/local/bin/run_video_slam
-
-# Show help
+cd ~/Documents/stella_vslam_examples
+./setup_path.sh
+source ~/.bashrc
+# Now run from anywhere:
 run_video_slam --help
 ```
 
----
-
-## 🎬 How to Run with Viewer and Mapping
-
-### Step 1: Download Vocabulary File (One Time Only)
-
+**Manual way:**
 ```bash
-mkdir -p ~/vocab
-cd ~/vocab
-wget https://github.com/stella-cv/FBoW_orb_vocab/raw/main/orb_vocab.fbow
+echo 'export PATH="$HOME/Documents/stella_vslam_examples/build:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+# Now run from anywhere:
+run_video_slam --help
 ```
 
-### Step 2: Run SLAM
-
-## 🎥 Live Camera SLAM (Real-Time)
-
-**For 360° camera:**
+### Option C: Use full paths
 ```bash
-run_camera_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -c ~/Documents/openvslam/example/aist/equirectangular.yaml \
-  -n 0
+~/Docum./run_video_slam --helpents/stella_vslam_examples/build/run_video_slam --help
 ```
-
-**For regular camera (webcam, USB camera):**
-```bash
-run_camera_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -c ~/Documents/openvslam/example/kitti/KITTI_mono_00-02.yaml \
-  -n 0
-```
-
-**For fisheye camera:**
-```bash
-run_camera_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -c ~/Documents/openvslam/example/euroc/EuRoC_mono.yaml \
-  -n 0
-```
-
-**Note:** Change `-n 0` to 1, 2, 3, etc. if your camera is on a different device.
-
----
-
-## 📹 Video File SLAM
-
-**For 360° videos:**
-```bash
-run_video_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -m /path/to/your_video.mp4 \
-  -c ~/Documents/openvslam/example/aist/equirectangular.yaml
-```
-
-**For regular camera videos:**
-```bash
-run_video_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -m /path/to/your_video.mp4 \
-  -c ~/Documents/openvslam/example/kitti/KITTI_mono_00-02.yaml
-```
-
-**Save the map after processing:**
-```bash
-run_video_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -m /path/to/your_video.mp4 \
-  -c ~/Documents/openvslam/example/aist/equirectangular.yaml \
-  -o my_map.msg
-```
-
-### What You'll See
-
-The viewer will show:
-- 🗺️ 3D map points being created
-- 📹 Camera trajectory (path the camera took)
-- 🖼️ Current video frame
-- 📊 Real-time statistics
-
-**Note:** Viewer and mapping are **enabled by default**. The viewer window will appear automatically.
 
 ## Available Executables
 
@@ -378,7 +309,7 @@ cd ~/Documents/stella_vslam_examples/build
 ./run_camera_slam \
   -v ../data/orb_vocab.fbow \
   -c <config.yaml> \
-  -n 0  # Camera device ID
+  --device-id 0  # Camera device ID
 ```
 
 ### run_image_slam - Image Sequence
@@ -455,11 +386,7 @@ sudo ldconfig
 ### No Viewer Displayed
 If running headless or without display, use:
 ```bash
-./run_video_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -m video.mp4 \
-  -c config.yaml \
-  --viewer none
+./run_video_slam ... --viewer none
 ```
 
 ### Slow Performance
@@ -648,20 +575,12 @@ Since you're running on a Raspberry Pi:
 
 1. **Use frame skipping** for smoother performance:
    ```bash
-   ./run_video_slam \
-     -v ~/vocab/orb_vocab.fbow \
-     -m video.mp4 \
-     -c config.yaml \
-     --frame-skip 3
+   ./run_video_slam ... --frame-skip 3
    ```
 
 2. **Process offline** (no real-time waiting):
    ```bash
-   ./run_video_slam \
-     -v ~/vocab/orb_vocab.fbow \
-     -m video.mp4 \
-     -c config.yaml \
-     --no-sleep
+   ./run_video_slam ... --no-sleep
    ```
 
 3. **Reduce video resolution** in your config YAML:
@@ -708,20 +627,12 @@ stella_vslam supports multiple viewers:
 
 4. **none** - No viewer (headless mode)
    ```bash
-   ./run_video_slam \
-     -v ~/vocab/orb_vocab.fbow \
-     -m video.mp4 \
-     -c config.yaml \
-     --viewer none
+   ./run_video_slam ... --viewer none
    ```
 
 For Raspberry Pi remote access, try:
 ```bash
-./run_video_slam \
-  -v ~/vocab/orb_vocab.fbow \
-  -m video.mp4 \
-  -c config.yaml \
-  --viewer iridescence_viewer
+./run_video_slam ... --viewer iridescence_viewer
 # Then access via browser at http://<pi-ip-address>:8080
 ```
 
@@ -808,7 +719,7 @@ This is normal! You have three options:
 1. **Always run from the build directory**:
    ```bash
    cd ~/Documents/stella_vslam_examples/build
-   ./run_video_slam -v ../data/orb_vocab.fbow -m video.mp4 -c config.yaml
+   ./run_video_slam ...
    ```
 
 2. **Add to PATH** (one time, permanent):
@@ -837,11 +748,9 @@ wget https://github.com/stella-cv/FBoW_orb_vocab/raw/main/orb_vocab.fbow
 
 Then reference it as:
 ```bash
-# If in build directory
-./run_video_slam -v ../data/orb_vocab.fbow -m video.mp4 -c config.yaml
-
-# OR if in PATH
-run_video_slam -v ~/Documents/stella_vslam_examples/data/orb_vocab.fbow -m video.mp4 -c config.yaml
+./run_video_slam -v ../data/orb_vocab.fbow ...  # If in build directory
+# OR
+run_video_slam -v ~/Documents/stella_vslam_examples/data/orb_vocab.fbow ...  # If in PATH
 ```
 
 ---

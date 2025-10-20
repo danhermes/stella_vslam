@@ -1,0 +1,50 @@
+System:
+  num_grid_cols: 48
+  num_grid_rows: 27
+
+#==============#
+# Camera Model #
+#==============#
+
+Camera:
+  name: "Raspberry Pi Camera"
+  setup: "monocular"
+  model: "perspective"
+
+  fx: 800.0
+  fy: 800.0
+  cx: 640.0
+  cy: 360.0
+
+  k1: 0.0
+  k2: 0.0
+  p1: 0.0
+  p2: 0.0
+  k3: 0.0
+
+  fps: 30.0
+  cols: 1280
+  rows: 720
+
+  color_order: "RGB"
+
+#================#
+# ORB Parameters #
+#================#
+
+Feature:
+  name: "Pi Camera ORB"
+  scale_factor: 1.2
+  num_levels: 8
+  ini_fast_threshold: 20
+  min_fast_threshold: 7
+
+#====================#
+# Mapping Parameters #
+#====================#
+
+Mapping:
+  baseline_dist_thr_ratio: 0.02
+  redundant_obs_ratio_thr: 0.9
+  num_covisibilities_for_landmark_generation: 10
+  num_covisibilities_for_landmark_fusion: 10

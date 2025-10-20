@@ -1,0 +1,14 @@
+Documentation Files in This Directory
+======================================
+
+README.md       - Original stella_vslam documentation from GitHub
+USAGE_GUIDE.md  - Complete guide for this installation (BUILD + USAGE + TROUBLESHOOTING)
+
+Quick Reference
+===============
+Executables: ~/Documents/stella_vslam_examples/build/
+Examples:    ~/Documents/stella_vslam_examples/CHEAT_SHEET.md
+
+To run:
+  cd ~/Documents/stella_vslam_examples/build
+  ./run_video_slam --help

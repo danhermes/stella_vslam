@@ -1,0 +1,43 @@
+System:
+  num_grid_cols: 48
+  num_grid_rows: 27
+
+Camera:
+  name: "Raspberry Pi Camera 640x480"
+  setup: "monocular"
+  model: "perspective"
+
+  # Image resolution
+  fps: 30.0
+  cols: 640
+  rows: 480
+
+  # Camera intrinsics (adjusted for 640x480 from 1280x720)
+  # These are approximate - calibrate your camera for better results
+  fx: 400.0
+  fy: 400.0
+  cx: 320.0
+  cy: 240.0
+
+  # Distortion coefficients (set to 0 if uncalibrated)
+  k1: 0.0
+  k2: 0.0
+  p1: 0.0
+  p2: 0.0
+  k3: 0.0
+
+  color_order: "RGB"
+
+Feature:
+  name: "Pi Camera ORB 640x480"
+  scale_factor: 1.2
+  num_levels: 8
+  ini_fast_threshold: 20
+  min_fast_threshold: 7
+  max_num_keypoints: 2000
+
+Mapping:
+  baseline_dist_thr_ratio: 0.02
+  redundant_obs_ratio_thr: 0.9
+  num_covisibilities_for_landmark_generation: 10
+  num_covisibilities_for_landmark_fusion: 10

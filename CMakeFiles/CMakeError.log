@@ -1,0 +1,19 @@
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/dan/Documents/openvslam/CMakeFiles/CMakeScratch/TryCompile-thsIeP
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_28606/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_28606.dir/build.make CMakeFiles/cmTC_28606.dir/build
+gmake[1]: Entering directory '/home/dan/Documents/openvslam/CMakeFiles/CMakeScratch/TryCompile-thsIeP'
+Building C object CMakeFiles/cmTC_28606.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgemm_ -o CMakeFiles/cmTC_28606.dir/CheckFunctionExists.c.o -c /home/dan/Documents/openvslam/CMakeFiles/CMakeScratch/TryCompile-thsIeP/CheckFunctionExists.c
+Linking C executable cmTC_28606
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_28606.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_28606.dir/CheckFunctionExists.c.o -o cmTC_28606 
+/usr/bin/ld: CMakeFiles/cmTC_28606.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_28606.dir/build.make:99: cmTC_28606] Error 1
+gmake[1]: Leaving directory '/home/dan/Documents/openvslam/CMakeFiles/CMakeScratch/TryCompile-thsIeP'
+gmake: *** [Makefile:127: cmTC_28606/fast] Error 2
+
+
+
