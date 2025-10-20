@@ -455,7 +455,11 @@ sudo ldconfig
 ### No Viewer Displayed
 If running headless or without display, use:
 ```bash
-./run_video_slam ... --viewer none
+./run_video_slam \
+  -v ~/vocab/orb_vocab.fbow \
+  -m video.mp4 \
+  -c config.yaml \
+  --viewer none
 ```
 
 ### Slow Performance
@@ -644,12 +648,20 @@ Since you're running on a Raspberry Pi:
 
 1. **Use frame skipping** for smoother performance:
    ```bash
-   ./run_video_slam ... --frame-skip 3
+   ./run_video_slam \
+     -v ~/vocab/orb_vocab.fbow \
+     -m video.mp4 \
+     -c config.yaml \
+     --frame-skip 3
    ```
 
 2. **Process offline** (no real-time waiting):
    ```bash
-   ./run_video_slam ... --no-sleep
+   ./run_video_slam \
+     -v ~/vocab/orb_vocab.fbow \
+     -m video.mp4 \
+     -c config.yaml \
+     --no-sleep
    ```
 
 3. **Reduce video resolution** in your config YAML:
@@ -696,12 +708,20 @@ stella_vslam supports multiple viewers:
 
 4. **none** - No viewer (headless mode)
    ```bash
-   ./run_video_slam ... --viewer none
+   ./run_video_slam \
+     -v ~/vocab/orb_vocab.fbow \
+     -m video.mp4 \
+     -c config.yaml \
+     --viewer none
    ```
 
 For Raspberry Pi remote access, try:
 ```bash
-./run_video_slam ... --viewer iridescence_viewer
+./run_video_slam \
+  -v ~/vocab/orb_vocab.fbow \
+  -m video.mp4 \
+  -c config.yaml \
+  --viewer iridescence_viewer
 # Then access via browser at http://<pi-ip-address>:8080
 ```
 
@@ -788,7 +808,7 @@ This is normal! You have three options:
 1. **Always run from the build directory**:
    ```bash
    cd ~/Documents/stella_vslam_examples/build
-   ./run_video_slam ...
+   ./run_video_slam -v ../data/orb_vocab.fbow -m video.mp4 -c config.yaml
    ```
 
 2. **Add to PATH** (one time, permanent):
@@ -817,9 +837,11 @@ wget https://github.com/stella-cv/FBoW_orb_vocab/raw/main/orb_vocab.fbow
 
 Then reference it as:
 ```bash
-./run_video_slam -v ../data/orb_vocab.fbow ...  # If in build directory
-# OR
-run_video_slam -v ~/Documents/stella_vslam_examples/data/orb_vocab.fbow ...  # If in PATH
+# If in build directory
+./run_video_slam -v ../data/orb_vocab.fbow -m video.mp4 -c config.yaml
+
+# OR if in PATH
+run_video_slam -v ~/Documents/stella_vslam_examples/data/orb_vocab.fbow -m video.mp4 -c config.yaml
 ```
 
 ---
